@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import PatientList from './components/PatientList';
+import MedicationList from './components/MedicationList';
+import HealthRecordList from './components/HealthRecordList';
+import UserList from './components/UserList';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route path="/" exact>
+          <h1>Welcome to the Nurse App</h1>
+        </Route>
+        <Route path="/patients" component={PatientList} />
+        <Route path="/medications" component={MedicationList} />
+        <Route path="/health-records" component={HealthRecordList} />
+        <Route path="/users" component={UserList} />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
