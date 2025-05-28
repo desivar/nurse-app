@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Changed 'Switch' to 'Routes' and removed 'Switch' from import
 import Navbar from './components/Navbar';
 import PatientList from './components/PatientList';
 import MedicationList from './components/MedicationList';
@@ -10,15 +10,13 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route path="/" exact>
-          <h1>Welcome to the Nurse App</h1>
-        </Route>
-        <Route path="/patients" component={PatientList} />
-        <Route path="/medications" component={MedicationList} />
-        <Route path="/health-records" component={HealthRecordList} />
-        <Route path="/users" component={UserList} />
-      </Switch>
+      <Routes> {/* Replaced <Switch> with <Routes> */}
+        <Route path="/" exact element={<h1>Welcome to the Nurse App</h1>} /> {/* Used 'element' prop */}
+        <Route path="/patients" element={<PatientList />} /> {/* Used 'element' prop */}
+        <Route path="/medications" element={<MedicationList />} /> {/* Used 'element' prop */}
+        <Route path="/health-records" element={<HealthRecordList />} /> {/* Used 'element' prop */}
+        <Route path="/users" element={<UserList />} /> {/* Used 'element' prop */}
+      </Routes>
     </Router>
   );
 };
